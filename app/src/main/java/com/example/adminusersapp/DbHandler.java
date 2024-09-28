@@ -37,9 +37,8 @@ public class DbHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
     }
 
-    public String addUser(String username, String email, String password){
+    public boolean addUser(String username, String email, String password){
 
-        String res = "Registered Successfully!";
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -51,11 +50,7 @@ public class DbHandler extends SQLiteOpenHelper {
         //tablename, null, values
         long result = db.insert(TABLE_USER, null,values);
 
-        if(result == -1){
-            res = "Email must be unique, email already registered!";
-        }
-
-        return res;
+        return result != -1;//result -1 false result not -1 true
     }
 
     public boolean checkUserEmail(String email, String password){

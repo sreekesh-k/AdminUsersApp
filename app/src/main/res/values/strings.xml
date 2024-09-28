@@ -5,4 +5,7 @@
     <string name="are_you_a_new_user">Are you a new user?</string>
     <string name="register">Register</string>
     <string name="admin"><![CDATA[Admin >]]></string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 </resources>
