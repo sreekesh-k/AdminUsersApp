@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AdminUsersApp</string>
+    <string name="welcome_to_admin_user_app">WELCOME TO ADMIN USER APP</string>
+    <string name="login">Login</string>
+    <string name="are_you_a_new_user">Are you a new user?</string>
+    <string name="register">Register</string>
+    <string name="admin"><![CDATA[Admin >]]></string>
 </resources>
