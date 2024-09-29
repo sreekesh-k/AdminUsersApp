@@ -110,20 +110,31 @@ The `DbHandler` class is responsible for managing database creation and versioni
 
 ## Admin Panel
 
-The admin panel is a simple screen that shows a list of all registered users. It's implemented using a `ListView`, and the data is fetched from the SQLite database.
+In the Admin Panel, after logging in with valid credentials, the admin can view the list of all registered users. Instead of using a `ListView`, the app displays users in a simple `TextView` by concatenating the user details and setting the text dynamically.
 
 ### Code for Fetching Users in AdminActivity
 
 ```java
-Cursor cursor = dbHandler.getAllUsers();
-if (cursor.getCount() > 0) {
-    while (cursor.moveToNext()) {
-        String username = cursor.getString(1);
-        String email = cursor.getString(2);
-        userList.add(new User(username, email));
+if (dbHandler.checkAdminCredentials(strName, strPassword)) {
+    username.setText("");
+    password.setText("");
+    
+    Cursor cursor = dbHandler.listAllUsers();
+    String users = "";
+    int i = 1;
+
+    if (cursor.moveToFirst()) {
+        do {
+            // 0-id, 1-username, 2-email, 3-password
+            users = userlist.getText().toString(); // Get current text
+            users += "\n" + i + ". " + cursor.getString(1) + " - "
+                     + cursor.getString(2) + " - "
+                     + cursor.getString(3); // Append user data
+            i++;
+            userlist.setText(users); // Update user list text
+        } while (cursor.moveToNext());
     }
 }
-cursor.close();
 ```
 
 ## Contributing
