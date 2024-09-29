@@ -10,4 +10,7 @@
     <string name="username">Username</string>
     <string name="logout">Logout</string>
     <string name="welcome">WELCOME</string>
+    <string name="textview">TextView</string>
+    <string name="username_email_password">Username - Email - Password</string>
+    <string name="admin_pannel">ADMIN PANNEL</string>
 </resources>

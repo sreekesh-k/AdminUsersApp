@@ -39,7 +39,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
     public boolean addUser(String username, String email, String password){
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
 
@@ -55,7 +55,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
     public boolean checkUserEmail(String email, String password){
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor;
         //SELECT * FROM users WHERE email=? AND password=?
         cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COL_EMAIL + "=?" + " AND " +

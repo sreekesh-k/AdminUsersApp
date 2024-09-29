@@ -54,10 +54,11 @@ public class RegisterActivity extends AppCompatActivity {
                 if(dbHandler.addUser(userName,email,password)){
                     Toast.makeText(RegisterActivity.this, "REGISTERED SUCCESSFULLY! YOU CAN NOW LOGIN",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     finish();
                 }
                 else{
-                    Toast.makeText(RegisterActivity.this, "REGISTRATION FAILED",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, "Email already Registered",Toast.LENGTH_LONG).show();
                 }
             }
 

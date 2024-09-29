@@ -31,7 +31,7 @@ public class SuccessLoginActivity extends AppCompatActivity {
         String email = intent.getStringExtra("Email");
         welcome.setText("Welcome back!" + email);
 
-        logout = findViewById(R.id.loginbtn);
+        logout = findViewById(R.id.logout);
 
         logout.setOnClickListener(v ->{
             finish();

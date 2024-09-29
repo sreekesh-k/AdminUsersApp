@@ -33,13 +33,13 @@ public class LoginActivity extends AppCompatActivity {
         dbHandler = new DbHandler(LoginActivity.this);
         email = findViewById(R.id.loginUserEmail);
         password = findViewById(R.id.LoginUserPassword);
-
+        errors = findViewById(R.id.loginError);
         loginbtn =findViewById(R.id.verifyLoginBtn);
 
 
         loginbtn.setOnClickListener(v ->{
             String strEmail = email.getText().toString().trim();
-            String strPassword = email.getText().toString().trim();
+            String strPassword = password.getText().toString().trim();
 
             if(strEmail.isEmpty() || strPassword.isEmpty()){
                 errors.setText("All Feilds are Mandatory");
@@ -49,10 +49,14 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "LOGIN SUCCESS",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, SuccessLoginActivity.class);
                     intent.putExtra("Email",strEmail);
+                    startActivity(intent);
                     finish();
+                    return;
                 }
-                errors.setText("Invalid Credentials");
-                password.setText("");
+
+                    errors.setText("Invalid Credentials");
+                    password.setText("");
+
             }
 
         });
