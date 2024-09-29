@@ -18,6 +18,12 @@ public class DbHandler extends SQLiteOpenHelper {
     private static final String COL_EMAIL = "email";
     private static final String COL_PASSWORD = "password";
 
+    private static final String TABLE_ADMIN = "admins";
+    private static final String COL_ADMIN_ID = "id";
+    private static final String COL_ADMIN_NAME = "name";
+    private static final String COL_ADMIN_PASSWORD = "password";
+
+
     public DbHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -29,6 +35,20 @@ public class DbHandler extends SQLiteOpenHelper {
                         + COL_USERNAME + " TEXT, " + COL_EMAIL + " TEXT UNIQUE, " + COL_PASSWORD + " TEXT)";
 
         db.execSQL(query);
+
+        // Create admins table
+        String createAdminsTable = "CREATE TABLE " + TABLE_ADMIN + " (" +
+                COL_ADMIN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_ADMIN_NAME + " TEXT, " +
+                COL_ADMIN_PASSWORD + " TEXT)";
+        db.execSQL(createAdminsTable);
+
+        // Insert default admin ("admin", "admin")
+        ContentValues values = new ContentValues();
+        values.put(COL_ADMIN_NAME, "admin");
+        values.put(COL_ADMIN_PASSWORD, "admin");
+        db.insert(TABLE_ADMIN, null, values);
+
     }
 
     @Override
@@ -69,6 +89,20 @@ public class DbHandler extends SQLiteOpenHelper {
         return false;
     }
 
+    public boolean checkAdminCredentials(String name, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ADMIN + " WHERE " + COL_ADMIN_NAME + "=?" +
+                " AND " + COL_ADMIN_PASSWORD + "=?", new String[]{name, password});
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
+    }
+
+    public Cursor listAllUsers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_USER;
+        return db.rawQuery(query, null);
+    }
 
 
 

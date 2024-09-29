@@ -7,6 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".AdminActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeadmin">
+
+        <EditText
+            android:id="@+id/adminname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="@string/username"
+            />
+
+        <EditText
+            android:id="@+id/adminpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/verifyAdminbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/login"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/welcomeadmin"
         android:layout_width="0dp"
@@ -15,7 +59,6 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/poppins_black"
-        android:padding="40dp"
         android:text="@string/admin_pannel"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -34,12 +77,13 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:text="@string/username_email_password"
+        android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeadmin" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
