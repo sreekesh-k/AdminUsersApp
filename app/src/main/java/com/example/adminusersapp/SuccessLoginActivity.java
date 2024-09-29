@@ -29,7 +29,7 @@ public class SuccessLoginActivity extends AppCompatActivity {
         welcome = findViewById(R.id.welcomeuser);
         Intent intent = getIntent();
         String email = intent.getStringExtra("Email");
-        welcome.setText("Welcome back!" + email);
+        welcome.setText("Welcome back!\n" + email);
 
         logout = findViewById(R.id.logout);
 
